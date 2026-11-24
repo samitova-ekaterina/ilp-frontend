@@ -27,14 +27,14 @@ In Windows PowerShell with scripts disabled by the execution policy, call `npm.c
 
 The table lists what is in the repository now.
 
-| Requirement                                                           | Where                                                                                                                                                                                                                               |
-| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| A single-page application built with a modern framework and a bundler | React 19 and Vite 8: `index.html`, `src/main.tsx`, `vite.config.ts`                                                                                                                                                                 |
-| A clear project structure                                             | `src/app` holds the start of the application and its common settings, `src/features` holds one folder for every section of the application, `src/shared` holds what all sections use. A folder appears together with its first code |
-| Separation into feature modules                                       | A section takes common things from `src/shared` and never imports from another section; `src/shared` imports from no section. ESLint checks both rules: `eslint.config.js`                                                          |
-| Clear data interfaces and types for the API                           | `api/openapi.json` is the saved API description of the server; the types in `src/shared/api/generated` are generated from it and are not written by hand                                                                            |
-| ESLint and a formatter                                                | `eslint.config.js` and `.prettierrc.json`. The type `any` and styles written in the markup are errors                                                                                                                               |
-| Checks on every push                                                  | `.github/workflows/checks.yml`: the code style, the code format, the generated types and the build                                                                                                                                  |
+| Requirement                                                           | Where                                                                                                                                                                                                                                                                                                       |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A single-page application built with a modern framework and a bundler | React 19 and Vite 8: `index.html`, `src/main.tsx`, `vite.config.ts`                                                                                                                                                                                                                                         |
+| A clear project structure                                             | `src/app` holds the start of the application and its common settings, `src/features` holds one folder for every section of the application, `src/shared` holds what all sections use, in the folders `components`, `services`, `models`, `styles` and `i18n`. A folder appears together with its first code |
+| Separation into feature modules                                       | A section takes common things from `src/shared` and never imports from another section; `src/shared` imports from no section. ESLint checks both rules: `eslint.config.js`                                                                                                                                  |
+| Clear data interfaces and types for the API                           | `api/openapi.json` is the saved API description of the server; the types in `src/shared/models/api` are generated from it and are not written by hand                                                                                                                                                       |
+| ESLint and a formatter                                                | `eslint.config.js` and `.prettierrc.json`. The type `any` and styles written in the markup are errors                                                                                                                                                                                                       |
+| Checks on every push                                                  | `.github/workflows/checks.yml`: the code style, the code format, the generated types and the build                                                                                                                                                                                                          |
 
 ## The API description and the generated types
 
@@ -45,6 +45,6 @@ When the API of the server changes:
 1. Copy the new `docs/api/openapi.json` from `ilp-backend` to `api/openapi.json`.
 2. Run `npm run api:types`.
 3. Run `npm run build`: it names every place of the code that no longer fits the new description.
-4. Commit `api/openapi.json` together with the folder `src/shared/api/generated`.
+4. Commit `api/openapi.json` together with the folder `src/shared/models/api`.
 
 The check on GitHub generates the types again and fails when they differ from the committed ones.
