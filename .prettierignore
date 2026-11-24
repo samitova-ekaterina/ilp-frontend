@@ -1,0 +1,4 @@
+dist
+package-lock.json
+api/openapi.json
+src/shared/api/generated

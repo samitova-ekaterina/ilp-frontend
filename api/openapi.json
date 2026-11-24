@@ -1,0 +1,119 @@
+{
+  "components" : {
+    "schemas" : {
+      "LanguageResponse" : {
+        "properties" : {
+          "code" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "Problem" : {
+        "properties" : {
+          "code" : {
+            "description" : "The permanent name of the error.",
+            "type" : "string"
+          },
+          "detail" : {
+            "type" : "string"
+          },
+          "errors" : {
+            "description" : "Only when the input is invalid: what to correct.",
+            "items" : {
+              "properties" : {
+                "code" : {
+                  "description" : "The permanent name of the reason.",
+                  "type" : "string"
+                },
+                "field" : {
+                  "description" : "The form field or request parameter to correct.",
+                  "type" : "string"
+                }
+              },
+              "required" : [ "code", "field" ],
+              "type" : "object"
+            },
+            "type" : "array"
+          },
+          "instance" : {
+            "type" : "string"
+          },
+          "requestId" : {
+            "description" : "The same number as in the X-Request-Id header.",
+            "type" : "string"
+          },
+          "status" : {
+            "description" : "The HTTP status of the answer.",
+            "type" : "integer"
+          },
+          "title" : {
+            "type" : "string"
+          }
+        },
+        "required" : [ "code", "detail", "requestId", "status", "title" ],
+        "type" : "object"
+      }
+    }
+  },
+  "info" : {
+    "description" : "Interactive learning from PDF materials: exercises and adaptive spaced repetition.",
+    "title" : "ILP API",
+    "version" : "v1"
+  },
+  "openapi" : "3.1.0",
+  "paths" : {
+    "/api/v1/languages" : {
+      "get" : {
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "items" : {
+                    "$ref" : "#/components/schemas/LanguageResponse"
+                  },
+                  "type" : "array"
+                }
+              }
+            },
+            "description" : "OK",
+            "headers" : {
+              "X-Request-Id" : {
+                "description" : "The number the server gave to this request. The log lines of the request carry it too.",
+                "required" : true,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "default" : {
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description" : "Any error. The body is the same for every status.",
+            "headers" : {
+              "X-Request-Id" : {
+                "description" : "The number the server gave to this request. The log lines of the request carry it too.",
+                "required" : true,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        },
+        "tags" : [ "language-controller" ]
+      }
+    }
+  }
+}
