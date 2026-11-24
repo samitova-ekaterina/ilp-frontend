@@ -14,8 +14,8 @@ export default tseslint.config(
     languageOptions: { globals: globals.browser },
     plugins: { 'react-hooks': reactHooks, boundaries },
     settings: {
-      // Without this the folder rules cannot follow an import that has no file extension.
-      'import/resolver': { node: { extensions: ['.ts', '.tsx'] } },
+      // The folder rules must find the file behind every import the way TypeScript does, with or without an extension.
+      'import/resolver': { typescript: { project: './tsconfig.app.json' } },
       'boundaries/elements': [
         { type: 'app', pattern: 'src/app' },
         { type: 'feature', pattern: 'src/features/*', capture: ['feature'] },

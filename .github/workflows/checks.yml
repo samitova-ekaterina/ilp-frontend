@@ -45,6 +45,7 @@ jobs:
       - name: Check that the generated API types match the saved API description
         run: |
           npm run api:types
-          git diff --exit-code -- src/shared/api/generated
+          git status --porcelain -- src/shared/api/generated
+          test -z "$(git status --porcelain -- src/shared/api/generated)"
       - name: Build
         run: npm run build
