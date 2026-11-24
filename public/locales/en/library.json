@@ -1,0 +1,20 @@
+{
+  "list": {
+    "title": "Author's library"
+  },
+  "upload": {
+    "title": "Material upload"
+  },
+  "split": {
+    "title": "Document split"
+  },
+  "report": {
+    "title": "Parsing report"
+  },
+  "flagged": {
+    "title": "Confirmation of flagged items"
+  },
+  "presentation": {
+    "title": "Exercise presentation"
+  }
+}

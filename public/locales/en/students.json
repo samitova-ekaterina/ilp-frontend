@@ -1,0 +1,14 @@
+{
+  "list": {
+    "title": "Students"
+  },
+  "card": {
+    "title": "Student card"
+  },
+  "proposal": {
+    "title": "Adaptation proposal with rationale"
+  },
+  "homework": {
+    "title": "Homework assignment"
+  }
+}

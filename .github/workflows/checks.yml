@@ -27,6 +27,8 @@ jobs:
         run: npm run lint
       - name: Check the code format
         run: npm run format:check
+      - name: Check that the interface texts match in all languages
+        run: npm run locales:check
 
   build:
     name: Build

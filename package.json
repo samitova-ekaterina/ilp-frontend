@@ -13,12 +13,19 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "locales:check": "node scripts/check-locales.mjs",
     "api:types": "openapi-ts",
-    "check": "npm run lint && npm run format:check && npm run build"
+    "check": "npm run lint && npm run format:check && npm run locales:check && npm run build"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.108.4",
+    "i18next": "^27.2.7",
+    "i18next-http-backend": "^4.1.1",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "react-i18next": "^18.0.3",
+    "react-router": "^8.5.2",
+    "zustand": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -31,6 +38,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-boundaries": "^7.4.4",
+    "eslint-plugin-i18next": "^6.1.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.14.0",
     "prettier": "3.10.1",

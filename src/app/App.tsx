@@ -1,9 +1,12 @@
-const PRODUCT_NAME = 'ILP';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { RouterProvider } from 'react-router/dom';
+import { queryClient } from './queryClient';
+import { router } from './router';
 
 export function App() {
   return (
-    <main>
-      <h1>{PRODUCT_NAME}</h1>
-    </main>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   );
 }

@@ -1,0 +1,40 @@
+{
+  "productName": "ILP",
+  "pageTitle": "{{page}} - ILP",
+  "loading": "Loading...",
+  "menu": {
+    "label": "Sections",
+    "signIn": "Sign in",
+    "lessons": "Lessons",
+    "students": "Students",
+    "library": "Library",
+    "today": "Today",
+    "level": "Level",
+    "profile": "Profile"
+  },
+  "language": {
+    "label": "Interface language"
+  },
+  "toasts": {
+    "label": "Messages",
+    "close": "Close the message"
+  },
+  "errors": {
+    "network": "The server is not answering. Check the connection and try again.",
+    "server": "The server could not complete the request. Try again in a minute.",
+    "unexpected": "The request was not completed.",
+    "requestId": "Request number: {{requestId}}",
+    "forbidden": {
+      "title": "No access",
+      "text": "You do not have access to this page."
+    },
+    "notFound": {
+      "title": "Nothing found",
+      "text": "Nothing was found at this address."
+    },
+    "page": {
+      "title": "This page failed to open",
+      "text": "The problem is on our side. Reload the page or open another section."
+    }
+  }
+}

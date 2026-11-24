@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
 import boundaries from 'eslint-plugin-boundaries';
+import i18next from 'eslint-plugin-i18next';
 import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
@@ -12,7 +13,7 @@ export default tseslint.config(
   {
     files: ['src/**/*.{ts,tsx}'],
     languageOptions: { globals: globals.browser },
-    plugins: { 'react-hooks': reactHooks, boundaries },
+    plugins: { 'react-hooks': reactHooks, boundaries, i18next },
     settings: {
       // The folder rules must find the file behind every import the way TypeScript does, with or without an extension.
       'import/resolver': { typescript: { project: './tsconfig.app.json' } },
@@ -25,6 +26,19 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       '@typescript-eslint/no-explicit-any': 'error',
+      'no-console': 'error',
+      'no-restricted-globals': [
+        'error',
+        { name: 'fetch', message: 'Every request goes through src/shared/services/request.ts.' },
+      ],
+      // Every text a person reads comes from the files of interface texts.
+      'i18next/no-literal-string': [
+        'error',
+        {
+          mode: 'jsx-only',
+          'jsx-attributes': { include: ['^aria-label$', '^title$', '^alt$', '^placeholder$'] },
+        },
+      ],
       'no-restricted-syntax': [
         'error',
         {
@@ -65,6 +79,18 @@ export default tseslint.config(
         },
       ],
     },
+  },
+  {
+    files: ['src/shared/services/logger.ts'],
+    rules: { 'no-console': 'off' },
+  },
+  {
+    files: ['src/shared/services/request.ts'],
+    rules: { 'no-restricted-globals': 'off' },
+  },
+  {
+    files: ['scripts/**/*.mjs'],
+    languageOptions: { globals: globals.node },
   },
   prettier,
 );
