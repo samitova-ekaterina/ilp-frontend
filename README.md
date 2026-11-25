@@ -56,4 +56,3 @@ The project is in active development on the `develop` branch.
 - Implemented now: see the sections above.
 - Planned: screens, forms with validation, global error handling, loading states, unit tests for key components and end-to-end tests.
 - Each planned piece of work is an issue with sub-issues and a due date: [milestones](https://github.com/samitova-ekaterina/ilp-frontend/milestones), [issues](https://github.com/samitova-ekaterina/ilp-frontend/issues).
-- Issues for the later parts of the plan are being added.
